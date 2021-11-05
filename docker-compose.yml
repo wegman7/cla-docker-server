@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+   java:
+      build: .
+      volumes:
+         - ./elms:/usr/src/app
+      working_dir: /usr/src/app
+      stdin_open: true
+      tty: true
+   tomcat:
+      build: ./tomcat
+      ports:
+         - 8080:8080
+      volumes:
+         - ./war:/usr/local/tomcat/webapps
