@@ -9,8 +9,12 @@ services:
       stdin_open: true
       tty: true
    tomcat:
+      image: tomcat-image
+      container_name: tomcat
       build: ./tomcat
       ports:
          - 8080:8080
       volumes:
          - ./war:/usr/local/tomcat/webapps
+      stdin_open: true
+      tty: true

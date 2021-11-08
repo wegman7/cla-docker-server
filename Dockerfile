@@ -21,4 +21,4 @@ ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 # ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
 # CMD ["mvn"]
 
-# RUN mvn -f /usr/src/app/pom.xml clean package
+RUN mvn -f /usr/src/app/pom.xml clean package
