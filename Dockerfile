@@ -15,10 +15,10 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
 ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 
-# COPY mvn-entrypoint.sh /usr/local/bin/mvn-entrypoint.sh
-# COPY settings-docker.xml /usr/share/maven/ref/
+# WORKDIR /usr/src/app
+COPY ./elms /usr/src/app
 
-# ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
-# CMD ["mvn"]
+COPY ./start.sh /
 
-RUN mvn -f /usr/src/app/pom.xml clean package
+# CMD mvn -f /usr/src/app/pom.xml clean package
+CMD ["/start.sh"]

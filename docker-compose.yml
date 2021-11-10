@@ -2,19 +2,25 @@ version: '3.7'
 
 services:
    java:
-      build: .
+      image: java-image
+      container_name: java
       volumes:
-         - ./elms:/usr/src/app
-      working_dir: /usr/src/app
-      stdin_open: true
-      tty: true
+         - elms-war:/elms-war
+      build: .
+      # uncomment these to make the container persist after the build
+      # stdin_open: true
+      # tty: true
    tomcat:
       image: tomcat-image
       container_name: tomcat
-      build: ./tomcat
+      build: 
+         context: .
+         dockerfile: ./tomcat/Dockerfile
       ports:
          - 8080:8080
       volumes:
-         - ./war:/usr/local/tomcat/webapps
-      stdin_open: true
-      tty: true
+         - elms-war:/elms-war
+      # stdin_open: true
+      # tty: true
+volumes:
+   elms-war:
