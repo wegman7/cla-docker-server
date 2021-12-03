@@ -1,2 +1,5 @@
 /elms
 /war/*
+.svn
+document_templates
+version.properties

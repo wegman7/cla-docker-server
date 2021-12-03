@@ -6,6 +6,7 @@ services:
       container_name: java
       volumes:
          - elms-war:/elms-war
+         - ./elms:/elms
       build: .
       # uncomment these to make the container persist after the build
       # stdin_open: true
@@ -13,14 +14,15 @@ services:
    tomcat:
       image: tomcat-image
       container_name: tomcat
-      build: 
+      build:
          context: .
          dockerfile: ./tomcat/Dockerfile
       ports:
          - 8080:8080
       volumes:
          - elms-war:/elms-war
-      # stdin_open: true
-      # tty: true
+         - ./document_templates:/document_templates
+   #    stdin_open: true
+   #    tty: true
 volumes:
    elms-war:
